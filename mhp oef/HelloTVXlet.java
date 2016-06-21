@@ -13,7 +13,6 @@ import org.havi.ui.event.HActionListener;
 
 
 public class HelloTVXlet implements Xlet, HActionListener {
-//HActionListener nodig als je ergens op wilt klikken
         HScene scene;
         HTextButton button1;
   
@@ -29,30 +28,29 @@ public class HelloTVXlet implements Xlet, HActionListener {
     public void startXlet() {
         System.out.println("StartXlet");
         HStaticText label = new HStaticText("HELLO", 300, 100, 100, 50);
-        //maakt textbox label met x, y, hoogte en breedte
         
-        label.setBackgroundMode(HVisible.BACKGROUND_FILL); //vult de achtergrond en maakt zichbaar
-        label.setBackground(Color.CYAN); //achtergrondkleur aanpassen
+        label.setBackgroundMode(HVisible.BACKGROUND_FILL);
+        label.setBackground(Color.CYAN);
         
-        button1 = new HTextButton("BUTTON1", 100, 200, 100, 50);///maakt button aan
+        button1 = new HTextButton("BUTTON1", 100, 200, 100, 50);
         HTextButton button2 = new HTextButton("BUTTON2", 100, 300, 100, 50);
             
-        scene.add(button1);//zet button op scene
+        scene.add(button1);
         scene.add(button2);
         
-        button1.setFocusTraversal(null, button2, null, button1);//wisselen tussen buttons met pijltjes, links, onder, rechts, boven
+        button1.setFocusTraversal(null, button2, null, button1);
         button2.setFocusTraversal(null, button1, null, button2);
        
-        button1.setBackgroundMode(HVisible.BACKGROUND_FILL);//vullen van achtergrond
-        button1.setBackground(new DVBColor(63,63, 0, 127)); //rgb waarden, alpha
+        button1.setBackgroundMode(HVisible.BACKGROUND_FILL);
+        button1.setBackground(new DVBColor(63,63, 0, 127)); 
         
         button1.setActionCommand("button1klik");
         button1.addHActionListener(this);
         
         scene.add(label);
-        scene.validate();//werkt zoals paint methode
+        scene.validate();
         scene.setVisible(true);
-        button1.requestFocus(); //zet focus op button1
+        button1.requestFocus();
     }
 
     public void pauseXlet() {
@@ -65,10 +63,10 @@ public class HelloTVXlet implements Xlet, HActionListener {
 
     public void actionPerformed(ActionEvent event) {
         System.out.println(event.getActionCommand());
-        if (event.getActionCommand().equals("button1klik"))//als tekst gelijk aan
+        if (event.getActionCommand().equals("button1klik"))
         {
             button1.setBackground(Color.BLUE);
-            scene.repaint(); //herpainten
+            scene.repaint();
         }
     }
 }
